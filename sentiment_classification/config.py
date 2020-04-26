@@ -5,9 +5,9 @@ TRAIN_BATCH_SIZE = 8
 VALID_BATCH_SIZE = 4
 EPOCHS = 3
 ACCUMULATION = 2
-BERT_MODEL = 'bert-base-uncased'
+BERT_MODEL = 'distilbert-base-uncased'
 MODEL_PATH = 'model.bin'
-TRAIN_FILE = '~/Data/IMDB/IMDB_dataset.csv'
-TOKENIZER = transformers.BertTokenizer.from_pretrained(BERT_MODEL, 
+TRAIN_FILE = r'~/Data/IMDB/IMDB_Dataset.csv'
+TOKENIZER = transformers.DistilBertTokenizer.from_pretrained(BERT_MODEL, 
                 do_lower_case=True)
 

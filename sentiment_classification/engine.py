@@ -11,21 +11,21 @@ def train_fn(data_loader, model, optimizer, device, scheduler):
     model.train()
 
     for bi, d in tqdm(enumerate(data_loader), total=len(data_loader)):
-        ids = d['ids']
-        mask = d['mask']
-        token_type_ids = d['token_type_ids']
+        ids = d['input_ids']
+        # mask = d['mask']
+        # token_type_ids = d['token_type_ids']
         targets = d['targets']
 
         ids.to(device, dtype=torch.long)
-        mask.to(device, dtype=torch.long)
-        token_type_ids.to(device, dtype=torch.long)
+        # mask.to(device, dtype=torch.long)
+        # token_type_ids.to(device, dtype=torch.long)
         targets.to(device, dtype=torch.long)
 
         optimizer.zero_grad()
         outputs = model(
-            ids=ids,
-            mask=mask,
-            token_type_ids=token_type_ids
+            ids=ids
+            # mask=mask,
+            # token_type_ids=token_type_ids
         )
 
         loss = loss_fn(outputs, targets)
@@ -42,20 +42,20 @@ def train_fn(data_loader, model, optimizer, device, scheduler):
         with torch.no_grad():
             for bi, d in tqdm(enumerate(data_loader), total=len(data_loader)):
                 ids = d['ids']
-                mask = d['mask']
-                token_type_ids = d['token_type_ids']
+                # mask = d['mask']
+                # token_type_ids = d['token_type_ids']
                 targets = d['targets']
 
                 ids.to(device, dtype=torch.long)
-                mask.to(device, dtype=torch.long)
-                token_type_ids.to(device, dtype=torch.long)
+                # mask.to(device, dtype=torch.long)
+                # token_type_ids.to(device, dtype=torch.long)
                 targets.to(device, dtype=torch.long)
 
                 
                 outputs = model(
-                    ids=ids,
-                    mask=mask,
-                    token_type_ids=token_type_ids
+                    ids=ids
+                    # mask=mask,
+                    # token_type_ids=token_type_ids
                 )
 
                 fin_targets.extend(targets.cpu().detach().numpy().tolist())
