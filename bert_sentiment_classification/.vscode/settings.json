@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/Users/sachin/anaconda3/envs/torch/bin/python",
+    "vsintellicode.features.python.deepLearning": "enabled"
+}
